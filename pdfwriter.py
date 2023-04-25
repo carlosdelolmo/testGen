@@ -1,5 +1,6 @@
 import datetime
 import os
+import random
 import webbrowser
 
 from fpdf import FPDF
@@ -73,6 +74,7 @@ class generatePDF:
         pdf.cell(190, 10, "Respuestas", ln=True)
         pdf.set_text_color(10, 10, 10)
         resp_list = list(preguntas.keys())
+        random.shuffle(resp_list)
         for n in range(len(resp_list)):
             l = chr(ord('a') + respuestas[resp_list[n]])
             pdf.cell(15, 10, str(n+1)+": " + (l if showAnsers else ""), border='BTLR', align='L')
@@ -85,7 +87,7 @@ class generatePDF:
         pdf.set_text_color(10, 10, 10)
         interlineado = 6
         i = 1
-        for p in preguntas.keys():
+        for p in resp_list:
             if pdf.get_y() > 250:
                 pdf.add_page()
             pdf.multi_cell(100, interlineado, str(i) + ". " + p, 0,  align='L')
