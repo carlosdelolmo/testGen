@@ -8,6 +8,10 @@ from fpdf import FPDF
 
 
 filePath = "output/"
+
+if not os.path.exists(filePath):
+    os.makedirs(filePath)
+    
 class FPDF(FPDF):
     title: str
     version: int
