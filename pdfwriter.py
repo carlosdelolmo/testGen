@@ -125,7 +125,7 @@ class generatePDF:
                     else:
                         raise Exception
             else:
-                pdf.multi_cell(100, interlineado, str(i) + ". " + cleanP, 0,  align='L')
+                pdf.multi_cell(190, interlineado, str(i) + ". " + cleanP, 0,  align='L')
             j = 1
             for r in preguntas[p]:
                 pdf.set_x(15)
