@@ -2,12 +2,14 @@ import datetime
 import os
 import random
 import webbrowser
+from PIL import Image
+from io import BytesIO
 
 from fpdf import FPDF
 
 
 
-filePath = "/home/carlos/Escritorio/tests/"
+filePath = "/home/carlos/"
 class FPDF(FPDF):
     title: str
     version: int
@@ -90,17 +92,66 @@ class generatePDF:
         for p in resp_list:
             if pdf.get_y() > 250:
                 pdf.add_page()
-            pdf.multi_cell(100, interlineado, str(i) + ". " + p, 0,  align='L')
+            # if not p.startswith("$"):
+            #     pdf.multi_cell(100, interlineado, str(i) + ". " + p, 0,  align='L')
+            
+            splittedP = p.split("$")
+            hasImg = len(splittedP) > 1
+            if hasImg:
+                img = splittedP[1]
+            cleanP = splittedP[0].strip("\n")
+            if hasImg:
+                    # Check if the image file exists
+                    if os.path.exists(img):
+                        # print(str(i) + ". " + cleanP)
+                        pdf.multi_cell(190, interlineado, str(i) + ". " + cleanP, 0,  align='L')
+                        pdf.image(img, x = None, y = None, w = 170, h = 0, type = '', link = '')
+                    else:
+                        raise Exception
+            else:
+                pdf.multi_cell(100, interlineado, str(i) + ". " + cleanP, 0,  align='L')
             j = 1
             for r in preguntas[p]:
                 pdf.set_x(15)
                 l = chr(ord('a') + j - 1)
-                if showAnsers and int(respuestas[p]) == j - 1:
+                '''if showAnsers and int(respuestas[p]) == j - 1:
                     pdf.set_text_color(10, 150, 10)
                     pdf.multi_cell(100, interlineado, l + ") " + r, 0, align='L')
                     pdf.set_text_color(10, 10, 10)
                 else:
-                    pdf.multi_cell(100, interlineado, l + ") " + r, 0, align='L')
+                    pdf.multi_cell(100, interlineado, l + ") " + r, 0, align='L')'''
+                if showAnsers and int(respuestas[p]) == j - 1:
+                    pdf.set_text_color(10, 150, 10)
+                    splittedR = r.split("$")
+                    hasImg = len(splittedR) > 1
+                    if hasImg:
+                        img = splittedR[1]
+                    cleanR = splittedR[0].strip("\n")
+                    if hasImg:
+                        # Check if the image file exists
+                        if os.path.exists(img):
+                            pdf.multi_cell(100, interlineado, l + ") " + cleanR, 0,  align='L')
+                            pdf.image(img, x = pdf.get_x() + 20, y = None, w = 50, h = 0, type = '', link = '')
+                        else:
+                            raise Exception
+                    else:
+                        pdf.multi_cell(100, interlineado, l + ") " + cleanR, 0, align='L')
+                    pdf.set_text_color(10, 10, 10)
+                else:
+                    splittedR = r.split("$")
+                    hasImg = len(splittedR) > 1
+                    if hasImg:
+                        img = splittedR[1]
+                    cleanR = splittedR[0].strip("\n")
+                    if hasImg:
+                        # Check if the image file exists
+                        if os.path.exists(img):
+                            pdf.multi_cell(100, interlineado, l + ") " + cleanR, 0,  align='L')
+                            pdf.image(img, x = pdf.get_x() + 20, y = None, w = 50, h = 0, type = '', link = '')
+                        else:
+                            raise Exception
+                    else:
+                        pdf.multi_cell(100, interlineado, l + ") " + cleanR, 0, align='L')
                 j += 1
             pdf.cell(190, interlineado, "", 0, True)
             i += 1
