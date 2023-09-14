@@ -9,7 +9,7 @@ from fpdf import FPDF
 
 
 
-filePath = "/home/carlos/"
+filePath = "/home/carlos/tests/"
 class FPDF(FPDF):
     title: str
     version: int
@@ -23,7 +23,7 @@ class FPDF(FPDF):
             self.set_text_color(102, 0, 255)
             self.cell(95, 20, self.title, align='L', ln=True)
             self.set_font('times', 'B', 10)
-            self.cell(95, 5, "made with testGen", align='L', ln=True)
+            self.cell(95, 5, "made with testGen",link ="https://github.com/carlosdelolmo/testGen", align='L', ln=True)
             now = datetime.datetime.now()
             fnow = str(now.day) + "-" + str(now.month) + "-" + str(now.year)
             self.set_text_color(10, 10, 10)
