@@ -66,10 +66,16 @@ if __name__ == '__main__':
     for i in range(versions):
         data_map = get_map(data)
         preguntas_test, respuestas_test = generate_random_test(data_map, question_number)
-        # print(data_map)
-        # print(preguntas_test)
-        # print(respuestas_test)
-        pdfwriter.generatePDF.generarTest(preguntas_test, respuestas_test, version=i)
-        pdfwriter.generatePDF.generarTest(preguntas_test, respuestas_test, True, version=i, title=name)
+        # print(data_map)        
+        # random.shuffle(respuestas_test)
+
+        print(preguntas_test)
+        print(respuestas_test)
+        print("\n\n\n")
+        order = list(range(question_number))
+        random.shuffle(order)
+        print(order)
+        pdfwriter.generatePDF.generarTest(preguntas_test, respuestas_test, order, version=i)
+        pdfwriter.generatePDF.generarTest(preguntas_test, respuestas_test, order, True, version=i, title=name)
     # print(generar_numeros_aleatorios(10, 11))
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

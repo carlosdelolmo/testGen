@@ -59,7 +59,7 @@ class FPDF(FPDF):
 
 class generatePDF:
     @staticmethod
-    def generarTest(preguntas: dict, respuestas: dict, showAnsers: bool = False, version: int = 0, title: str = "Test"):
+    def generarTest(preguntas: dict, respuestas: dict, order: list, showAnsers: bool = False, version: int = 0, title: str = "Test"):
         pdf = FPDF('P', 'mm', 'A4', title, version)
         # pdf.add_font("times", "", "LinLibertine_R.ttf", uni=True)
         pdf.add_page()
@@ -76,12 +76,22 @@ class generatePDF:
         pdf.cell(190, 10, "Respuestas", ln=True)
         pdf.set_text_color(10, 10, 10)
         resp_list = list(preguntas.keys())
-        random.shuffle(resp_list)
-        for n in range(len(resp_list)):
+        # random.shuffle(resp_list)
+        '''for n in range(len(resp_list)):
             l = chr(ord('a') + respuestas[resp_list[n]])
             pdf.cell(15, 10, str(n+1)+": " + (l if showAnsers else ""), border='BTLR', align='L')
             if pdf.get_x() > 190:
+                pdf.ln()'''
+        i = 0
+        for index in order:
+        # for n in range(len(resp_list)):
+            # print(respuestas[resp_list[index]])
+            l = chr(ord('a') + respuestas[resp_list[index]])
+            pdf.cell(15, 10, str(i+1)+": " + (l if showAnsers else ""), border='BTLR', align='L')
+            if pdf.get_x() > 190:
                 pdf.ln()
+            i += 1
+
         pdf.ln()
         pdf.set_text_color(10, 10, 250)
         pdf.cell(190, 10, "", ln=True)
@@ -89,7 +99,9 @@ class generatePDF:
         pdf.set_text_color(10, 10, 10)
         interlineado = 6
         i = 1
-        for p in resp_list:
+        # for p in resp_list:
+        for index in order:
+            p = resp_list[index]
             if pdf.get_y() > 250:
                 pdf.add_page()
             # if not p.startswith("$"):
