@@ -75,7 +75,7 @@ if __name__ == '__main__':
         order = list(range(question_number))
         random.shuffle(order)
         # print(order)
-        pdfwriter.generatePDF.generarTest(preguntas_test, respuestas_test, order, version=i)
+        pdfwriter.generatePDF.generarTest(preguntas_test, respuestas_test, order, version=i, title=name)
         pdfwriter.generatePDF.generarTest(preguntas_test, respuestas_test, order, True, version=i, title=name)
     # print(generar_numeros_aleatorios(10, 11))
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

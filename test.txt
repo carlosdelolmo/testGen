@@ -1,2 +1,0 @@
-Pregunta 1#Respuesta correcta#Respuesta incorrecta#Otra respuesta incorrecta
-Pregunta 2#Respuesta correcta#Respuesta incorrecta#Otra respuesta incorrecta

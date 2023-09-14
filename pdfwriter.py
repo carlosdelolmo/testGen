@@ -1,7 +1,5 @@
 import datetime
 import os
-import random
-import webbrowser
 from PIL import Image
 from io import BytesIO
 
@@ -9,7 +7,7 @@ from fpdf import FPDF
 
 
 
-filePath = "/home/carlos/tests/"
+filePath = "output/"
 class FPDF(FPDF):
     title: str
     version: int
@@ -102,8 +100,10 @@ class generatePDF:
         # for p in resp_list:
         for index in order:
             p = resp_list[index]
+            x = pdf.get_x()
             if pdf.get_y() > 250:
                 pdf.add_page()
+                pdf.set_x(x)
             # if not p.startswith("$"):
             #     pdf.multi_cell(100, interlineado, str(i) + ". " + p, 0,  align='L')
             
@@ -159,6 +159,7 @@ class generatePDF:
                         # Check if the image file exists
                         if os.path.exists(img):
                             pdf.multi_cell(100, interlineado, l + ") " + cleanR, 0,  align='L')
+                            # print(pdf.get_x() + 20)
                             pdf.image(img, x = pdf.get_x() + 20, y = None, w = 50, h = 0, type = '', link = '')
                         else:
                             raise Exception
