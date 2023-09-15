@@ -61,14 +61,35 @@ Click para ir al [video](https://youtu.be/V04RHIDHhlo)
 
 [![Watch the video](https://i.imgflip.com/7z639g.gif)](https://youtu.be/V04RHIDHhlo)
 
+En el anterior video se generan exámenes para un examen de lectura del libro del Quijote. El fichero de preguntas es generado mediante la inteligencia artificial ChatGPT usando el siguiente prompt:
+```
+Eres un profesor de lengua y literatura de un instituto. Tus alumnos tienen 11 años. Genérame un banco de preguntas para un examen tipo test del libro de Don Quijote de la Mancha.
+El banco de preguntas debe seguir el siguiente formato: 
+"Pregunta#Respuesta correcta#Respuesta incorrecta#Otra respuesta incorrecta."
+Un ejemplo real podría ser:
+"¿Cómo se llama el protagonista?#Don Quijote#Sancho Panza#Dulcinea#Mari Carmen"
+Cada linea representa una pregunta. Genérame 40 preguntas sin más texto, solo el contenido del fichero. No deben haber números de pregunta.
+```
 
+Pero esto es completamente adaptable a cualquier situación y contexto. Por ejemplo, usando el siguiente prompt logramos estos [resultados](https://drive.google.com/drive/folders/1jTcs0YW1iEk7UnsNvnD2yb7wCPR25flr?usp=sharing):
+
+```
+Eres un profesor de historia de españa de un instituto. Tus alumnos tienen 14 años. Genérame un banco de preguntas para un examen tipo test de la historia de españa en el siglo XIX.
+El banco de preguntas debe seguir el siguiente formato: 
+"Pregunta#Respuesta correcta#Respuesta incorrecta#Otra respuesta incorrecta."
+Un ejemplo real podría ser:
+"¿Cuántas repúblicas hubo durante el siglo XIX en España?#una#dos#tres#cuatro"
+Cada linea representa una pregunta, donde NO deben haber números de línea, simplemente el formato anteriormente descrito. Genérame 40 preguntas sin más texto, solo el contenido del fichero.
+```
+Resultados:
+
+
+<a href="https://drive.google.com/drive/folders/1jTcs0YW1iEk7UnsNvnD2yb7wCPR25flr?usp=sharing"><img src="https://i.ibb.co/yhhq2pD/Captura-desde-2023-09-15-10-15-08.png" alt="Examen de ejemplo" width="500"/></a>
 
 ## Autor
+<a href="https://github.com/carlosdelolmo"><img src="https://i.ibb.co/xJ5CRzW/github-profilename-image.png" alt="carlosdelolmo" width="400"/></a>
 
-- [@carlosdelolmo](https://github.com/carlosdelolmo)
 
 
 ## Licencia
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
+<a href="https://choosealicense.com/licenses/mit/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/1920px-MIT_logo.svg.png" alt="MIT" height="50"/></a>
