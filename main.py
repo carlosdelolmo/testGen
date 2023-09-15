@@ -1,14 +1,8 @@
-# This is a sample Python script.
 import random
 import sys
-
 from fpdf import fpdf
-
 import pdfwriter
 
-
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Dou2ble Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 def read_data():
     if len(sys.argv) != 5:
@@ -19,7 +13,6 @@ def read_data():
     versions = int(sys.argv[3])
     name = sys.argv[4]
     lines = open_f.readlines()
-    # print(n, lines, len(lines))
     if n > len(lines):
         raise Exception("El número de preguntas solicitadas es mayor que las preguntas aportadas")
     return versions, lines, n, name
@@ -53,29 +46,18 @@ def shuffle_and_find_zero_position(arr):
     zero_position = arr.index(resp)
     return arr, zero_position
 
+
 def generar_numeros_aleatorios(n, x):
-    # print(n, x)
     numeros = random.sample(range(x+1), n)
-    # print(numeros)
     return numeros
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     versions, data, question_number, name = read_data()
     for i in range(versions):
         data_map = get_map(data)
         preguntas_test, respuestas_test = generate_random_test(data_map, question_number)
-        # print(data_map)        
-        # random.shuffle(respuestas_test)
-
-        # print(preguntas_test)
-        # print(respuestas_test)
-        # print("\n\n\n")
         order = list(range(question_number))
         random.shuffle(order)
-        # print(order)
         pdfwriter.generatePDF.generarTest(preguntas_test, respuestas_test, order, version=i, title=name)
         pdfwriter.generatePDF.generarTest(preguntas_test, respuestas_test, order, True, version=i, title=name)
-    # print(generar_numeros_aleatorios(10, 11))
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
